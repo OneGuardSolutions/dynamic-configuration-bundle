@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ConfigurationValueController extends Controller {
 	/**
-	 * @var \Doctrine\ORM\EntityManager|null
+	 * @var \Doctrine\ORM\EntityManagerInterface
 	 */
 	private $entityManager;
 

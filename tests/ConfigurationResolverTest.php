@@ -2,7 +2,7 @@
 
 namespace OneGuard\Bundle\DynamicConfigurationBundle;
 
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface;
+use Doctrine\Common\Persistence\ObjectRepository;
 use OneGuard\Bundle\DynamicConfigurationBundle\Entity\ConfigurationValue;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -13,7 +13,7 @@ class ConfigurationResolverTest extends TestCase {
 		$value->setKey('test.property');
 		$value->setValue('test.property.value');
 
-		$repo = $this->getMockBuilder(ServiceEntityRepositoryInterface::class)
+		$repo = $this->getMockBuilder(ObjectRepository::class)
 			->disableOriginalConstructor()
 			->setMethods(['find'])
 			->getMockForAbstractClass();
@@ -32,7 +32,9 @@ class ConfigurationResolverTest extends TestCase {
 
 	public function testGetDefinition() {
 		$definition = new StringDefinition('test.property');
-		$doctrine = $this->createMock(RegistryInterface::class);
+		$doctrine = $this->getMockBuilder(RegistryInterface::class)
+            ->disableOriginalConstructor()
+            ->getMockForAbstractClass();
 		$resolver = new ConfigurationResolver($doctrine, $definition);
 
 		$this->assertSame($definition, $resolver->getDefinition());

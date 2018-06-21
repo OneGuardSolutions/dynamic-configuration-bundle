@@ -7,5 +7,6 @@
 [![Build Status](https://travis-ci.org/OneGuardSolutions/dynamic-configuration-bundle.svg?branch=master)](https://travis-ci.org/OneGuardSolutions/dynamic-configuration-bundle)
 [![Coverage Status](https://coveralls.io/repos/github/OneGuardSolutions/dynamic-configuration-bundle/badge.svg?branch=master)](https://coveralls.io/github/OneGuardSolutions/dynamic-configuration-bundle?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/OneGuardSolutions/dynamic-configuration-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/OneGuardSolutions/dynamic-configuration-bundle/?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/9b206d5585e8e2f6a913/maintainability)](https://codeclimate.com/github/OneGuardSolutions/dynamic-configuration-bundle/maintainability)
 
 Symfony bundle for loading dynamic configuration from database

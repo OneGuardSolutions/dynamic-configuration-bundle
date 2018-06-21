@@ -1,0 +1,48 @@
+{
+  "name": "oneguard/dynamic-configuration-bundle",
+  "description": "Symfony bundle for loading dynamic configuration from database",
+  "keywords": ["Configuration", "Database"],
+  "homepage": "https://github.com/OneGuardSolutions/dynamic-configuration-bundle",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "OneGuard",
+      "homepage": "https://oneguard.solutions"
+    },
+    {
+      "name": "Michal Falťan",
+      "email": "michal.faltan@oneguard.email"
+    },
+    {
+      "name": "Patrik Milán",
+      "email": "patrik.milan@oneguard.email"
+    },
+    {
+      "name": "Tomáš Pecsérke",
+      "email": "tomas.pecserke@oneguard.email"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "doctrine/orm": "^2.5",
+    "doctrine/doctrine-bundle": "^1.6",
+    "symfony/property-access": "^3.4|^4.0",
+    "symfony/form": "^3.4|^4.0",
+    "symfony/validator": "^3.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8.36|^5.7|^6.4"
+  },
+  "autoload": {
+    "psr-4": { "OneGuard\\Bundle\\DynamicConfigurationBundle\\": "src" }
+  },
+  "autoload-dev": {
+    "psr-4": { "OneGuard\\Bundle\\DynamicConfigurationBundle\\": "tests" }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}

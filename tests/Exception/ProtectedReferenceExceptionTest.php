@@ -14,5 +14,6 @@ class ProtectedReferenceExceptionTest extends TestCase {
         $this->assertSame($throwable, $exception->getPrevious());
 
         $this->assertEquals(400, $exception->getStatusCode());
+        $this->assertEquals([], $exception->getHeaders());
     }
 }

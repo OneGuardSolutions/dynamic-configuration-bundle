@@ -16,10 +16,14 @@ cache:
     - $HOME/.composer/cache
 
 install:
-  - composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
+  - travis_retry composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
+  # Install coveralls.phar
+  - wget -c -nc --retry-connrefused --tries=0 https://github.com/php-coveralls/php-coveralls/releases/download/v2.1.0/php-coveralls.phar -O coveralls.phar
+  - chmod +x coveralls.phar
+  - php coveralls.phar --version
 
 script: 
-  - php vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+  - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_success:
-  - travis_retry php vendor/bin/coveralls
+  - travis_retry php coveralls.phar -v

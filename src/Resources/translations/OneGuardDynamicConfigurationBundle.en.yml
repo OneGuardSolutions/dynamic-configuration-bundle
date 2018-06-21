@@ -1,0 +1,10 @@
+configurationValue:
+    assign: Assign Configuration Values
+    view: View Configuration Values
+main:
+    save: 'Save'
+
+view:
+    key: Key
+    label: Label
+    value: Value

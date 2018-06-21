@@ -1,0 +1,44 @@
+{% extends ":layout:base.html.twig" %}
+
+{% trans_default_domain 'OneGuardDynamicConfigurationBundle' %}
+
+{% block title -%}
+	{{ 'configurationValue.view'|trans }}
+{%- endblock %}
+
+{% block content %}
+	<h1>
+		{{ block('title') }}
+		<span class="pull-right">
+			<a class="btn btn-sm btn-default"
+			   href="{{ path('configurationValue.assign') }}">{{ 'configurationValue.assign'|trans }}</a>
+		</span>
+	</h1>
+	<table class="table table-striped table-condensed">
+		<thead>
+		<tr>
+			<th>{{ 'view.key'|trans }}</th>
+			<th>{{ 'view.label'|trans }}</th>
+			<th>{{ 'view.value'|trans }}</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for configurationValue in configurationValues %}
+			<tr>
+				<td>
+					{{ configurationValue.key }}
+				</td>
+				<td>
+					{{ (translationPrefix ~ configurationValue.key)|trans({}, translationDomain) }}
+				</td>
+				<td>
+					{{ configurationValue.value }}
+					{% if labels[configurationValue.key] is defined %}
+						({{ labels[configurationValue.key] }})
+					{% endif %}
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

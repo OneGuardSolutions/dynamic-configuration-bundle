@@ -1,0 +1,31 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    OneGuard\Bundle\DynamicConfigurationBundle\:
+        resource: '../../*'
+        exclude: '../../{Entity,Exception,Repository,Model,Tests}'
+
+    OneGuard\Bundle\DynamicConfigurationBundle\Controller\:
+        resource: '../../Controller'
+        public: true
+        tags: [ 'controller.service_arguments' ]
+        calls:
+            - [ 'setContainer', [ '@service_container' ] ]
+
+    OneGuard\Bundle\DynamicConfigurationBundle\Form\ConfigurationValueType:
+        arguments:
+            '$translationDomain': '%one_guard.dynamic_configuration.translation_domain%'
+            '$translationPrefix': '%one_guard.dynamic_configuration.translation_prefix%'
+
+    OneGuard\Bundle\DynamicConfigurationBundle\Listener\ProtectedReferencesDoctrineSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+

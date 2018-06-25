@@ -41,6 +41,9 @@ class ConfigurationResolver {
 	public function resolve() {
 		$repo = $this->doctrine->getRepository(ConfigurationValue::class);
 		$configurationValue = $repo->find($this->definition->getKey());
+		if ($configurationValue === null) {
+			return null;
+		}
 
 		switch (get_class($this->definition)) {
 			case StringDefinition::class:

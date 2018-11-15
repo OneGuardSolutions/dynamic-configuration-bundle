@@ -54,6 +54,7 @@ class ConfigurationValueController extends Controller {
 	/**
 	 * @Route(path="/assign", name="configurationValue.assign")
 	 * @throws \Doctrine\ORM\OptimisticLockException
+	 * @throws \Doctrine\ORM\ORMException
 	 */
 	public function assignAction(Request $request) {
 		$configurationValues = $this->entityManager->getRepository(ConfigurationValue::class)->findAll();
@@ -89,7 +90,7 @@ class ConfigurationValueController extends Controller {
 			return $this->redirectToRoute('configurationValue.view');
 		}
 
-		return $this->render('OneGuardDynamicConfigurationBundle:ConfigurationValue:assign.html.twig', ['form' => $form->createView()]);
+		return $this->render('@OneGuardDynamicConfiguration/ConfigurationValue/assign.html.twig', ['form' => $form->createView()]);
 	}
 
 	/**
@@ -108,7 +109,7 @@ class ConfigurationValueController extends Controller {
 			}
 		}
 
-		return $this->render('OneGuardDynamicConfigurationBundle:ConfigurationValue:view.html.twig', [
+		return $this->render('@OneGuardDynamicConfiguration/ConfigurationValue/view.html.twig', [
 			'configurationValues' => $configurationValues,
 			'translationDomain' => $this->getParameter('one_guard.dynamic_configuration.translation_domain'),
 			'translationPrefix' => $this->getParameter('one_guard.dynamic_configuration.translation_prefix'),

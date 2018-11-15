@@ -23,7 +23,7 @@ class DefinitionRegistry {
 	 */
 	public function register(Definition $definition) {
 		if (array_key_exists($definition->getKey(), $this->definitions)) {
-			throw new \InvalidArgumentException('Definition already exists.');
+			throw new \InvalidArgumentException('Definition already exists (Key: ' . $definition->getKey() . ').');
 		}
 		$this->definitions[$definition->getKey()] = $definition;
 	}
@@ -35,7 +35,7 @@ class DefinitionRegistry {
 	 */
 	public function get(string $key) : Definition {
 		if (!array_key_exists($key, $this->definitions)) {
-			throw new \InvalidArgumentException('Definition not found.');
+			throw new \InvalidArgumentException('Definition not found (Key: ' . $key . ').');
 		}
 		return $this->definitions[$key];
 	}
